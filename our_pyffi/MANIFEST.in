@@ -1,0 +1,34 @@
+include README.rst
+include INSTALL.rst
+include LICENSE.rst
+include CHANGELOG.rst
+include AUTHORS.rst
+include TODO.rst
+include THANKS.rst
+include CONTRIBUTING.rst
+include pyffi/formats/nif/nifxml/nif.xml
+include pyffi/formats/kfm/kfmxml/kfm.xml
+include pyffi/formats/cgf/cgf.xml
+include pyffi/formats/dds/dds.xml
+include pyffi/formats/tga/tga.xml
+include pyffi/formats/egm/egm.xml
+include pyffi/formats/egt/egt.xml
+include pyffi/formats/esp/esp.xml
+include pyffi/formats/tri/tri.xml
+include pyffi/formats/bsa/bsa.xml
+include pyffi/formats/psk/psk.xml
+include pyffi/formats/rockstar/dir_/dir.xml
+include pyffi/formats/dae/COLLADASchema.xsd
+include pyffi/utils/mopper.exe
+recursive-include examples *.py
+include examples/simple/simple.xml
+include examples/simple/somefile.simple
+recursive-include tests *.*
+include docs/*.*
+include utilities/toaster/*.ini
+include utilities/toaster/*.sh
+recursive-include external *
+exclude external/xdelta*.exe
+prune *.svn*
+prune *.git*
+

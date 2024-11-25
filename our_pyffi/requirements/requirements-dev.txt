@@ -1,0 +1,8 @@
+check-manifest
+coveralls
+nose
+pdbpp
+pyflakes
+pytest==3.6
+pytest-cov
+wheel

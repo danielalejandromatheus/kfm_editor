@@ -1,0 +1,49 @@
+environment:
+  matrix:
+    - PYTHON: "C:\\Python35"
+      PYTHON_VERSION: "3.5"
+      RUN: "%PYTHON%\\python"
+      PIP: "%PYTHON%\\Scripts\\pip"
+      PYTEST: "%PYTHON%\\Scripts\\py.test"
+
+    - PYTHON: "C:\\Python36"
+      PYTHON_VERSION: "3.6"
+      RUN: "%PYTHON%\\python"
+      PIP: "%PYTHON%\\Scripts\\pip"
+      PYTEST: "%PYTHON%\\Scripts\\py.test"
+
+    - PYTHON: "C:\\Python35-x64"
+      PYTHON_VERSION: "3.5"
+      RUN: "%PYTHON%\\python"
+      PIP: "%PYTHON%\\Scripts\\pip"
+      PYTEST: "%PYTHON%\\Scripts\\py.test"
+
+    - PYTHON: "C:\\Python36-x64"
+      PYTHON_VERSION: "3.6"
+      RUN: "%PYTHON%\\python"
+      PIP: "%PYTHON%\\Scripts\\pip"
+      PYTEST: "%PYTHON%\\Scripts\\py.test"
+
+#matrix:
+#  fast_finish: true
+
+install:
+  - "git submodule update --init --recursive"
+  - "ECHO %PYTHON%"
+  - "ECHO %PYTHON_VERSION%%APPVEYOR_BUILD_FOLDER%"
+  - "set HOME=%APPVEYOR_BUILD_FOLDER%"
+  - "%PYTHON%\\python -m pip install ."
+  - "%PYTHON%\\python -m pip install .[dev]"
+  - "%PYTHON%\\python -m pip install .[doc]"
+  - "cd %HOME%"
+
+test: off
+
+build_script:
+  - "%PYTEST% --cov pyffi --cov-report=term tests"
+  - "%RUN% setup.py sdist bdist_wheel"
+  - "%RUN% setup.py build_docs -a"
+
+artifacts:
+  # bdist_wheel puts your built wheel in the dist directory
+  - path: dist\*

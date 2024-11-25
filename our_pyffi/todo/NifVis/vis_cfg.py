@@ -1,0 +1,4 @@
+_WINDOW_WIDTH   = 640
+_WINDOW_HEIGHT  = 480
+
+_FONT_SIZE      = 24
